@@ -32,12 +32,30 @@ Implementation Notes
 """
 
 # imports
-import typing
 
 __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/bassman7689/CircuitPython_ical.git"
 
+class ICal:
+  def __init__(self, filename: str) -> None:
+    self.file = None
+    self.filename = filename
 
+  def __open(self):
+    self.file = open(self.filename, 'r')
 
-class ICal():
-    def __init__(file):
+  def __close(self):
+    self.file.close()
+
+  def __parseFile(self):
+    for line in self.file:
+      pass
+
+  def parse(self):
+    try:
+      self.__open()
+      self.__parseFile()
+    except:
+      print("exception while parsing ical file")
+    finally:
+      self.__close()
